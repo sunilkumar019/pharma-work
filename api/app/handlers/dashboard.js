@@ -12,7 +12,7 @@ const fetchCount = async (req, res, next) => {
         filter.franchisee_id = req.franchiseeId;
         if (req.repId) filter.rep_id = req.repId;
         let repCount = { count: 0 };
-        let companyOrderCount = { count: 02 };
+        let companyOrderCount = { count: 0 };
         let orderCount = { count: 0 }
 
         let productCount = await productController.countProducts(filter);
