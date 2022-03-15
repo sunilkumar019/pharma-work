@@ -1,0 +1,29 @@
+name: staging CI By Ram
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+
+  job-one:
+    name: create-build-and-live-on-clientapps
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.CLTAPPS_HOST }}
+          username: ${{ secrets.CLTAPP_USER }}
+          password: ${{ secrets.CLTAPP_PASSWORD }}
+          port: ${{ secrets.CLTAPP_PORT }}
+          script: |
+            cd /home/clientapwebhoper/dashboard_and_apps_new/demo
+            git checkout master
+            git reset --hard
+            git pull https://${{ secrets.GIT_RAM_USERNAME }}:${{ secrets.GIT_RAM_PASSWORD }}@github.com/ramwh/pharma-app-dashboard-new.git master
+            git status
+            npm run build
+            pm2 restart pharma_demo_new

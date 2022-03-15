@@ -1,0 +1,10 @@
+node_modules
+.env
+core/uploads
+pharma_dashboard/node_modules
+pharma_dashboard/build
+pharma_dashboard/package-lock.json
+firebase_notification/admin-sdk.json
+.DS_Store
+.idea
+package-lock.json
