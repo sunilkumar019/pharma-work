@@ -20,7 +20,7 @@ const fetchCount = async (req, res, next) => {
         let productVisualaidCount = await productController.countVisualates(filter)
         let favProductCount = await productController.countFavProduct({ rep_id: req.repId })
         let offerCount = await offerController.countOffer(filter);
-
+        
         if (req.is_owner) {
             repCount = await repController.getRepCount(filter);
             companyOrderCount = await companyOrderController.countOrder(filter);
